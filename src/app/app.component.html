@@ -1,3 +1,50 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container fullscreen class="sidenav-container">
+    <md-sidenav id="sidenav" #sidenav mode="over">
+        <div class="userViewContainer">
+
+            <div class="userView">
+                <div class="userDetails">
+                    <div class="userImage"></div>
+                    <div class="userName">
+                        <p>{{ this.as.user | json }}</p>
+                    </div>
+                    <div class="userEmail">
+
+                        <!--<p>{{ currentUser | async }}</p>-->
+                    </div>
+                </div>
+            </div>
+            <div class="userViewPad">
+                Second
+            </div>
+            <div class="userViewPad">
+                <a (click)="logout()" (click)=sidenav.close()>
+                    <md-icon>exit_to_app</md-icon>Logout
+                </a>
+            </div>
+        </div>
+    </md-sidenav>
+    <div class="header-toolbar">
+        <md-toolbar color="primary" class="header-toolbar2">
+            <button md-icon-button (click)=sidenav.toggle() *ngIf="this.af.authState | async"><md-icon>menu</md-icon></button>
+
+            <div fxFlex="row" fxLayoutAlign="center center" *ngIf="(this.af.authState | async)?.uid" class="header-btn">
+                <button md-icon-button raised><md-icon>home</md-icon></button>
+                <button md-icon-button raised><md-icon>book</md-icon></button>
+            </div>
+            <span fxFlex></span>
+            <div fxFlex="row" fxLayoutAlign="center center" *ngIf="!(this.af.authState | async)?.uid" class="header-btn">
+                <button md-icon-button raised><md-icon>home</md-icon></button>
+                <button md-icon-button raised><md-icon>book</md-icon></button>
+            </div>
+
+            <button md-button *ngIf="!(this.af.authState | async)?.uid" (click)="login()">Log In</button>
+        </md-toolbar>
+    </div>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+        <app-navbar></app-navbar>
+        <app-navbar></app-navbar>
+    </div>
+</md-sidenav-container>

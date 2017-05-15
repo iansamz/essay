@@ -1,0 +1,58 @@
+<form #orderPrefs='ngForm' (ngSubmit)="onSubmit(orderPrefs.value)" fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center center">
+    <br>
+    <md-radio-group [(ngModel)]="writerLevel" name="writerLevel" (change)=change()>
+        Writer Level:
+        <md-radio-button value=1>
+            FREE
+        </md-radio-button>
+        <md-radio-button value=1.25>
+            Premiuim(+25%)
+        </md-radio-button>
+        <md-radio-button value=1.3>
+            TOP 10(+30%)
+        </md-radio-button>
+    </md-radio-group>
+    &nbsp;
+    <div>
+        Originality Report:
+        <md-checkbox [(ngModel)]="originality" name="originality" (change)=ifOrig()> +$29.99</md-checkbox>
+    </div>
+    &nbsp;
+
+    <div>
+        Proofread by editor:
+        <md-checkbox [(ngModel)]="proofRead" name="proofRead" (change)=ifProof()> +$2.55(per page)</md-checkbox>
+
+    </div>
+    &nbsp;
+    <div>
+        1-page Summary:
+        <md-checkbox [(ngModel)]="summary" name="summary" (change)=ifSummary()>+$14.99</md-checkbox>
+    </div>
+    &nbsp;
+    <div>
+        Urgent writer asign:
+        <md-checkbox [(ngModel)]="urgentWriter" name="urgentWriter" (change)=ifUrg()>+$9.99</md-checkbox>
+    </div>
+    &nbsp;
+    <div>
+        I'd like to get a draft:
+        <md-checkbox [(ngModel)]="draft" name="draft" (change)=ifDraft()>+15%</md-checkbox>
+    </div>
+    &nbsp;
+    <md-radio-group [(ngModel)]="custService" name="custService" (change)=change()>
+        Customer service:
+        <md-radio-button value=1>
+            BASIC
+        </md-radio-button>
+        <md-radio-button value=1.1>
+            Advanced(10%)
+        </md-radio-button>
+        <md-radio-button value=1.2>
+            TOP 10(20%)
+        </md-radio-button>
+    </md-radio-group>
+    <p> Order Total:{{ total | currency:'USD':true:'.2-2' }}</p>
+    &nbsp;
+    <button center md-raised-button color="primary" class="next-btn">Next Step!</button>
+</form>

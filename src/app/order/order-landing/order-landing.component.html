@@ -1,0 +1,32 @@
+<md-card class="order-card">
+    <form [formGroup]="orderForm" autocomplete="off" novalidate fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center space-around " class="form-container" fxLayoutgap="10px">
+
+            <md-select formControlName="service" placeholder="Type of service" (change)=change()>
+                <md-option *ngFor="let service of servicesA" [value]="service.value">
+                    {{service.name}}
+                </md-option>
+            </md-select>
+            <md-select *ngIf="ifResume" formControlName="paper" placeholder="Type of {{typeService}}" (change)=change()>
+                <md-option *ngFor="let paper of papersA[optionsValue].array" [value]="paper.value">
+                    {{paper.name}}
+                </md-option>
+            </md-select>
+            <md-input-container *ngIf="ifResume">
+                <input formControlName="pages" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of {{typeQ}}" (change)=change()>
+            </md-input-container>
+            <md-select *ngIf="ifResume" formControlName="academicLevel" placeholder="Academic Level" (change)=change()>
+                <md-option *ngFor="let level of academicLevelA[optionsValue].array" [value]="level.value">
+                    {{level.name}}
+                </md-option>
+            </md-select>
+            <md-select formControlName="urgency" placeholder="Urgency" (change)=change()>
+                <md-option *ngFor="let urgency of urgencyA[optionsValue].array" [value]="urgency.value">
+                    {{urgency.name}}
+                </md-option>
+            </md-select>
+        </div>
+        <button center md-raised-button color="primary" id="order-btn" (click)=goOrder()>Order Now!</button>
+        <p>{{ orderPrice | currency:'USD':true:'.2-2' }}</p>
+    </form>
+</md-card>

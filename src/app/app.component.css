@@ -1,0 +1,61 @@
+md-sidenav {
+    width: 300px;
+}
+
+.header-toolbar {
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+    width: 100%
+}
+
+.header-toolbars {
+    height: 40px
+}
+
+.sidenav-container /deep/ .mat-sidenav-content {
+    overflow: visible;
+}
+
+.content {
+    padding: 20px 0 20px 0;
+    padding-left: 0px;
+    height: calc(100% - 84px);
+    overflow: auto;
+    width: 100%
+}
+
+.header-btn {
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.footer {}
+
+.userView {
+    height: 200px;
+    background-image: url(../assets/images/t2.jpg);
+    background-size: cover;
+}
+
+.userViewContainer {
+    padding: 0 0px!important;
+}
+
+.userViewPad {
+    padding: 0 16px;
+    height: 64px
+}
+
+.userDetails {
+    /*position: realtive;*/
+    padding: 32px 32px 0;
+    margin-bottom: 8px;
+}
+
+.userImage {
+    /*background-image: url(../assets/images/man.png);*/
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}

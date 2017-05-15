@@ -1,0 +1,62 @@
+<form [formGroup]="orderForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(orderForm.value)">
+    <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center space-around " class="form-container" fxLayoutgap="10px">
+        <md-select formControlName="service" placeholder="Type of Service" (change)=change()>
+            <md-option *ngFor="let service of servicesA" [value]="service.value">
+                {{service.name}}
+            </md-option>
+        </md-select>
+        <md-select *ngIf="ifResume" formControlName="paper" placeholder="Type of {{typeService}}" (change)=change()>
+            <md-option *ngFor="let paper of papersA[optionsValue].array " [value]="paper.value">
+                {{paper.name}}
+            </md-option>
+        </md-select>
+        <md-select formControlName="subject" placeholder="Subject Area">
+            <md-option *ngFor="let subject of subjectsA" [value]="subject.value">
+                {{subject.name}}
+            </md-option>
+        </md-select>
+        <md-input-container>
+            <textarea formControlName="topic" mdInput placeholder="Topic"></textarea>
+        </md-input-container>
+        <md-input-container>
+            <textarea formControlName="orderDesc" mdInput placeholder="Order Description"></textarea>
+        </md-input-container>
+        <md-select formControlName="format" placeholder="Type of Format">
+            <md-option *ngFor="let format of formatsA" [value]="format.value">
+                {{format.name}}
+            </md-option>
+        </md-select>
+        <div>
+            <md-input-container>
+                <input formControlName="resources" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of Resources">
+            </md-input-container>
+            &nbsp;
+            <md-checkbox formControlName="resNeed" (change)=resNeed()>Not Needed</md-checkbox>
+        </div>
+        <md-select *ngIf="ifResume" formControlName="academicLevel" placeholder="Academic Level" (change)=change()>
+            <md-option *ngFor="let academicLevel of academicLevelsA[optionsValue].array" [value]="academicLevel.value">
+                {{academicLevel.name}}
+            </md-option>
+        </md-select>
+        <md-select formControlName="urgency" placeholder="Urgency" (change)=change()>
+            <md-option *ngFor="let urgency of urgencysA[optionsValue].array " [value]="urgency.value">
+                {{urgency.name}}
+            </md-option>
+        </md-select>
+
+        <md-input-container *ngIf="ifResume">
+            <input formControlName="pages" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of {{typeQ}}" (change)=change()>
+        </md-input-container>
+        <md-radio-group formControlName="writer" (change)=change()>
+            <md-radio-button value=1>
+                US Writer
+            </md-radio-button>
+            <md-radio-button value=1.1>
+                Uk Writer(10% to the order)
+            </md-radio-button>
+        </md-radio-group>
+        <br>
+        <p> Order Total:{{ orderPrice | currency:'USD':true:'.2-2' }}</p>
+        <button [disabled]="!orderForm.valid" type="submit" center md-raised-button color="primary" class="next-btn">Next Step</button>
+    </div>
+</form>

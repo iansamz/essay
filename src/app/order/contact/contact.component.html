@@ -1,0 +1,20 @@
+<div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center space-around " class="form-container" fxLayoutgap="10px">
+    <div *ngIf="!(this.af.authState | async)?.uid">
+        <md-tab-group class="login-container">
+            <md-tab label="NEW CUSTOMER">
+                <app-signup fxFlex="50"></app-signup>
+                <app-signup-email fxFlex="50"></app-signup-email>
+            </md-tab>
+            <md-tab label="RETURNING CUSTOMER">
+                <app-login-email fxFlex="50"></app-login-email>
+                <app-login fxFlex="50"></app-login>
+            </md-tab>
+        </md-tab-group>
+    </div>
+    <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center center">
+        <h3>PAYMENT METHODS</h3>
+        <p>Paypal</p>
+        &nbsp; &nbsp;
+        <button [disabled]="!(this.af.authState | async)?.uid" class="z-depth-2" center md-raised-button color="primary" id="order-btn" (click)="openCheckout()">Order Now!</button>
+    </div>
+</div>
