@@ -1,3 +1,14 @@
-<p>
-  active-orders works!
-</p>
+<div class="container">
+    <h2 class="title animated slideInLeft">Active Orders</h2>
+    <div fxLayoutAlign="stretch justify-content">
+        <div *ngFor="let order of arr">
+            <md-card class="card animated slideInLeft" fxFlex=25>
+                <p>Order : {{ order.orderId }}</p>
+                <p class="time"> {{ getExp(order.isTBD) }}</p>
+                <p>{{order.clientEmail}}</p>
+                <p>DeadLine : {{ order.isTBD | date:'short'}}</p>
+                <button (click)="viewOrder(order.orderId,order.clientUid)" center md-raised-button color="primary">View</button>
+            </md-card>
+        </div>
+    </div>
+</div>

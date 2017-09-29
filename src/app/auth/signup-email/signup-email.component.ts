@@ -11,7 +11,9 @@ export class SignupEmailComponent implements OnInit {
 
   state: string = '';
   error: any;
-
+  email : string;
+  password : string;
+  
   constructor(public as: AuthService,  private router: Router) { 
     this.as.authState();
   }
@@ -26,7 +28,10 @@ export class SignupEmailComponent implements OnInit {
       .then(
         (success) => {
           this.as.createUser();
-          this.router.navigate(['/home']);
+          
+          if(this.router.url =="/auth/signup-email"){
+            this.router.navigate(['/home']);
+          }
       }).catch(
         (err) => {
           this.error = err;

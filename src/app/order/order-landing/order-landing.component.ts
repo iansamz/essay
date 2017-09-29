@@ -1,6 +1,4 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
-import { FormControl,FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
 import { OrderLandingService }  from '../orderLanding.service';
 import { Order1 } from '../../classes/order1';
 import { Router } from '@angular/router';
@@ -12,18 +10,18 @@ import { Router } from '@angular/router';
 })
 export class OrderLandingComponent implements OnInit, OnDestroy {
 
-  private serviceSelected : FormControl;
-  private pagesSelected : FormControl;
-  private paperSelected : FormControl;
-  private academicLevelSelected : FormControl;
-  private urgencySelected : FormControl;
-  orderForm: FormGroup;
+  service : any;
+  pages : any;
+  paper : any;
+  academicLevel : any;
+  urgency : any;
   optionsValue : number;
   ifResume : boolean = true;
   orderPrice : number;
   multiplierA : number;
   multiplierB : number;
   multiplierC : number;
+  multiplierD : number;
   order : Order1 ;
   typeService : any;
   typeQ :any;
@@ -32,28 +30,26 @@ export class OrderLandingComponent implements OnInit, OnDestroy {
   academicLevelA : object;
   urgencyA : object;
   
-  constructor(public orderLandingService: OrderLandingService, private router : Router) { }
+  constructor(public orderLandingService: OrderLandingService, public router : Router) { }
 
   ngOnInit() {
     this.servicesA = this.orderLandingService.servicesA;
     this.papersA = this.orderLandingService.papersA;
     this.academicLevelA = this.orderLandingService.academicLevelA;
     this.urgencyA = this.orderLandingService.urgencyA;
-    this.serviceSelected = new FormControl(0);
-    this.paperSelected = new FormControl(0);
-    this.pagesSelected = new FormControl(1, CustomValidators.digits);
-    this.academicLevelSelected = new FormControl(1);
-    this.urgencySelected = new FormControl(1);
-    this.orderForm = new FormGroup({
-      service : this.serviceSelected,
-      paper : this.paperSelected,
-      pages : this.pagesSelected,
-      academicLevel : this.academicLevelSelected,
-      urgency : this.urgencySelected
-    });
-
-    this.optionsValue = this.orderForm.get('service').value;
-    this.calculatePrice();
+    this.service = 0;
+    this.paper = 0;
+    this.pages = 1;
+    this.academicLevel = 0;
+    this.urgency = 0;
+    
+    this.optionsValue = this.service;
+    
+    this.multiplierA = (this.academicLevelA[this.optionsValue].array[this.academicLevel]["value"]);
+    this.multiplierB = (this.urgencyA[this.optionsValue].array[this.urgency]["value"]); 
+    this.multiplierC = this.pages;
+    this.multiplierD = (this.servicesA[this.optionsValue]["price"]);
+    this.orderPrice = this.multiplierD*this.multiplierA*this.multiplierB*this.multiplierC;
 
     this.typeService = "Papers";
     this.typeQ = "Pages";
@@ -64,24 +60,24 @@ export class OrderLandingComponent implements OnInit, OnDestroy {
     this.orderLandingService.orderTaken = this.order;
   }
   
-  goOrder(){
+  goOrder(value){
     this.order = {
-      service : this.orderForm.get('service').value,
-      paper : this.orderForm.get('paper').value,
-      pages : this.orderForm.get('pages').value,
-      academicLevel : this.orderForm.get('academicLevel').value,
-      urgency : this.orderForm.get('urgency').value
+      service : value.service,
+      paper : value.paper,
+      pages : value.pages,
+      academicLevel : value.academicLevel,
+      urgency : value.urgency
     }
-    this.router.navigateByUrl('/order');
+    this.router.navigateByUrl('/order/new');
   }
 
   change(value){
     
-    this.optionsValue = this.orderForm.get('service').value;
+    this.optionsValue = value.service;
 
     this.checkResume();
     this.checkPType();
-    this.calculatePrice();
+    this.calculatePrice(value);
     
 
   }
@@ -108,12 +104,13 @@ export class OrderLandingComponent implements OnInit, OnDestroy {
     return this.ifResume;
   }
 
-  calculatePrice(){
-    this.multiplierA = this.orderForm.get('academicLevel').value;
-    this.multiplierB = this.orderForm.get('urgency').value;
-    this.multiplierC = this.orderForm.get('pages').value;
+  calculatePrice(value){
+    this.multiplierA = (this.academicLevelA[this.optionsValue].array[value.academicLevel]["value"]);
+    this.multiplierB = (this.urgencyA[this.optionsValue].array[value.urgency]["value"]); 
+    this.multiplierC = value.pages;
+    this.multiplierD = (this.servicesA[this.optionsValue]["price"]);
     
-    this.orderPrice = (this.servicesA[this.optionsValue]["price"])*this.multiplierA*this.multiplierB*this.multiplierC;
+    this.orderPrice = this.multiplierD*this.multiplierA*this.multiplierB*this.multiplierC;
     return this.orderPrice;
   }
 }

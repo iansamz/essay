@@ -4,47 +4,65 @@
 
             <div class="userView">
                 <div class="userDetails">
-                    <div class="userImage"></div>
-                    <div class="userName">
-                        <p>{{ this.as.user | json }}</p>
+                    <div class="userImage" [ngStyle]="{'background-image': 'url(' + this.as.user.photoURL + ')'}">
                     </div>
-                    <div class="userEmail">
-
-                        <!--<p>{{ currentUser | async }}</p>-->
+                    <div class="userName">
+                        {{ this.as.user.displayName }} {{ this.as.user.email }}<br>
+                        <button center md-raised-button color="primary" *ngIf="!ifUser" class="login-btn" (click)="login()" (click)="sidenav.close()">Log In</button>
                     </div>
                 </div>
             </div>
-            <div class="userViewPad">
-                Second
-            </div>
-            <div class="userViewPad">
-                <a (click)="logout()" (click)=sidenav.close()>
-                    <md-icon>exit_to_app</md-icon>Logout
-                </a>
-            </div>
+            <md-toolbar>
+                <md-toolbar-row (click)=active() (click)=sidenav.close() *ngIf=this.as.user.isAdmin>
+                    <md-icon class="sidenav-icon">assignment</md-icon>
+                    <span>Active Orders</span>
+                </md-toolbar-row>
+                <md-toolbar-row (click)=comp() (click)=sidenav.close() *ngIf=this.as.user.isAdmin>
+                    <md-icon class="sidenav-icon">dashboard</md-icon>
+                    <span>Complete Orders</span>
+                </md-toolbar-row>
+                <md-toolbar-row (click)=home() (click)=sidenav.close() *ngIf=!this.as.user.isAdmin>
+                    <md-icon class="sidenav-icon">home</md-icon>
+                    <span>Home</span>
+                </md-toolbar-row>
+                <md-toolbar-row *ngIf="ifUser && !this.as.user.isAdmin" (click)=dash() (click)=sidenav.close()>
+                    <md-icon class="sidenav-icon">dashboard</md-icon>
+                    <span>My Orders</span>
+                </md-toolbar-row>
+                <md-toolbar-row (click)=newO() (click)=sidenav.close() *ngIf=!this.as.user.isAdmin>
+                    <md-icon class="sidenav-icon">assignment</md-icon>
+                    <span>Make Order</span>
+                </md-toolbar-row>
+                <!--<md-toolbar-row *ngIf="ifUser && !this.as.user.isAdmin" (click)=settings() (click)=sidenav.close()>
+                    <md-icon class="sidenav-icon">settings</md-icon>
+                    <span>Settings</span>
+                </md-toolbar-row>-->
+                <md-toolbar-row (click)=contact() (click)=sidenav.close() *ngIf=!this.as.user.isAdmin>
+                    <md-icon class="sidenav-icon">phone</md-icon>
+                    <span>Contact</span>
+                </md-toolbar-row>
+                <md-toolbar-row *ngIf="ifUser" (click)="logout()" (click)=sidenav.close()>
+                    <md-icon class="sidenav-icon">exit_to_app</md-icon>
+                    <span>Logout</span>
+                </md-toolbar-row>
+            </md-toolbar>
         </div>
     </md-sidenav>
     <div class="header-toolbar">
         <md-toolbar color="primary" class="header-toolbar2">
-            <button md-icon-button (click)=sidenav.toggle() *ngIf="this.af.authState | async"><md-icon>menu</md-icon></button>
+            <button md-icon-button (click)=sidenav.toggle()><md-icon>menu</md-icon></button>
 
-            <div fxFlex="row" fxLayoutAlign="center center" *ngIf="(this.af.authState | async)?.uid" class="header-btn">
-                <button md-icon-button raised><md-icon>home</md-icon></button>
-                <button md-icon-button raised><md-icon>book</md-icon></button>
+            <div fxFlex="row" fxLayoutAlign="center center" class="logo-container">
+                <img class="logo animated slideInDown" src="../assets/images/kustom1.png">
             </div>
             <span fxFlex></span>
-            <div fxFlex="row" fxLayoutAlign="center center" *ngIf="!(this.af.authState | async)?.uid" class="header-btn">
-                <button md-icon-button raised><md-icon>home</md-icon></button>
-                <button md-icon-button raised><md-icon>book</md-icon></button>
-            </div>
 
-            <button md-button *ngIf="!(this.af.authState | async)?.uid" (click)="login()">Log In</button>
+            <button md-button *ngIf="!ifUser" (click)="login()">Log In</button>
         </md-toolbar>
     </div>
 
     <div class="content">
         <router-outlet></router-outlet>
-        <app-navbar></app-navbar>
-        <app-navbar></app-navbar>
+        <app-navbar class="footer"></app-navbar>
     </div>
 </md-sidenav-container>

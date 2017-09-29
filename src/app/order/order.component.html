@@ -1,18 +1,1 @@
-<md-card class="order-card">
-    <md-tab-group [(selectedIndex)]="currentTab">
-        <md-tab label="PAPER DETAILS">
-            <app-paper-details [tab]="currentTab" (nextTab)="nextTab1($event)"></app-paper-details>
-        </md-tab>
-        <!--[disabled]=tabable1-->
-        <md-tab [disabled]=!tabAble1 label="ORDER PREFENCES" fxLayout="column" fxLayoutAlign="center center">
-            <app-order-prefs [tab]="currentTab" [total]="totalB" (nextTab)="nextTab2($event)"></app-order-prefs>
-        </md-tab>
-        <md-tab [disabled]=!tabAble2 label="CONTACT INFORMATION" fxLayout="column" fxLayoutAlign="center center">
-            <app-order-contact></app-order-contact>
-        </md-tab>
-    </md-tab-group>
-</md-card>
-
-<p>
-    {{order | json}}
-</p>
+<router-outlet></router-outlet>

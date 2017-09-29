@@ -10,11 +10,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  userPDefault : string = "../assets/images/man.png";
+  ifUser : boolean = false;
   constructor(public as : AuthService, public af : AngularFireAuth, public router : Router){
     
   }
   ngOnInit(){
+    this.as.getCurrentUser().subscribe(auth=>{
+      if(auth !== false){
+        this.ifUser = true;
+      }else{
+        this.ifUser = false;
+      }
+       
+    });
+    
   }
 
   login(){
@@ -23,5 +32,26 @@ export class AppComponent implements OnInit {
 
   logout(){
     this.as.logout();
+  }
+  home(){
+    this.router.navigateByUrl('/home');
+  }
+  dash(){
+    this.router.navigateByUrl('/dashboard/orders');
+  }
+  newO(){
+    this.router.navigateByUrl('/order/new');
+  }
+  settings(){
+    this.router.navigateByUrl('/dashboard/settings');
+  }
+  contact(){
+    this.router.navigateByUrl('/contact');
+  }
+  active(){
+    this.router.navigateByUrl('/admin/active');
+  }
+  comp(){
+    this.router.navigateByUrl('/admin/complete');
   }
 }

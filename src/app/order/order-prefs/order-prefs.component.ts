@@ -1,18 +1,21 @@
-import { Component, OnInit,Input ,Output ,EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input ,Output ,EventEmitter } from '@angular/core';
 import { Order2 } from '../../classes/order2';
 import { Order3 } from '../../classes/order3';
 import { OrderService } from './../order.service';
+import { AuthService } from '../../auth/auth.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-order-prefs',
   templateUrl: './order-prefs.component.html',
   styleUrls: ['./order-prefs.component.css']
 })
-export class OrderPrefsComponent implements OnInit {
+export class OrderPrefsComponent implements OnInit, OnChanges {
 
-  @Input() total : number;
-  @Input() tab : any;
-  @Output() nextTab = new EventEmitter();
+  @Input() public total : number;
+  @Input() public tab : any;
+  public final : any;
+  @Output() public nextTab = new EventEmitter();
   writerLevel : number = 1;
   originality : boolean = false;
   proofRead : boolean = false;
@@ -28,26 +31,30 @@ export class OrderPrefsComponent implements OnInit {
   urgentW : number = 0;
   drft : number = 0;
   
-  constructor(public orderService: OrderService) { 
+  constructor(public orderService: OrderService, public as: AuthService) { 
 
   }
 
   ngOnInit() {
     
   }
-
+  ngOnChanges(){
+    let t = this.total
+  }
   
   nextTab2(){
     this.tab = 2;
-    this.nextTab.emit(this.tab);
+    this.final = this.orderService.finalOrder;
+    this.nextTab.emit({tab:this.tab,final:this.final});
   }
 
   onSubmit(formValues){
     let holder : Order3;
     holder = this.extend(this.orderService.order1,formValues);
     this.orderService.finalOrder =  holder;
-    console.log(this.orderService.finalOrder);
-
+    this.orderService.finalOrder.orderPrice = this.total;
+    this.orderService.finalOrder.isCompleted = false;
+    this.orderService.finalOrder.isPaid = false;
     this.nextTab2()
   }
 
@@ -84,9 +91,8 @@ export class OrderPrefsComponent implements OnInit {
     this.calculatePrice();
   }
   ifDraft(){
-    console.log(this.orderService.order1.orderPrice)
     if (this.draft == true){
-      this.drft = (this.orderService.order1.orderPrice*1.15)
+      this.drft = (this.orderService.order1.orderPrice*0.15)
     }else{
       this.drft = 0
     }

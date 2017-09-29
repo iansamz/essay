@@ -6,21 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  tabAble1: boolean = false;
-  tabAble2: boolean = false;
-  currentTab : number = 0; 
-  totalB : number;
-  ngOnInit() {
-  }
+
   constructor() {}
 
-  nextTab1(data){
-    this.currentTab = data.tab;
-    this.totalB = data.price;
-    this.tabAble1 = true;
+  ngOnInit(){
+    
   }
-  nextTab2(data){
-    this.currentTab = data;
-    this.tabAble2 = true;
-  }
+  
 }

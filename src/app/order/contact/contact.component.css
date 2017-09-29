@@ -1,3 +1,23 @@
 .login-container /deep/ md-tab-body /deep/ .mat-tab-body-content {
     display: flex;
+    align-items: center
+}
+
+.img {
+    height: 126px;
+    width: 126px;
+    padding: 10px;
+}
+
+@media (max-width: 426px) {
+    .payment {
+        align-items: stretch!important;
+        padding: 10px;
+    }
+    .lg {
+        display: inline!important;
+    }
+    .img {
+        width: 50px;
+    }
 }

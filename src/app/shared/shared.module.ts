@@ -1,8 +1,9 @@
 import { NgModule,ModuleWithProviders } from '@angular/core';
+import { LoaderComponent } from './loader/loader.component';
 // import { OrderLandingService } from './orderLanding.service'
 
 @NgModule({
-  declarations: [],
+  declarations: [LoaderComponent],
   providers: [  ]
 })
 export class SharedModule { 

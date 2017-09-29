@@ -5,4 +5,5 @@ export class User {
     providerId: string;
     photoURL: string;
     created: number;
+    isAdmin: boolean;
 }

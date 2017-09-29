@@ -1,20 +1,45 @@
 <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center space-around " class="form-container" fxLayoutgap="10px">
-    <div *ngIf="!(this.af.authState | async)?.uid">
+    <div class="lg" *ngIf="!ifUser" fxLayoutAlign="center stretch" fxFlex=100>
         <md-tab-group class="login-container">
             <md-tab label="NEW CUSTOMER">
-                <app-signup fxFlex="50"></app-signup>
-                <app-signup-email fxFlex="50"></app-signup-email>
+                <app-signup></app-signup>
             </md-tab>
             <md-tab label="RETURNING CUSTOMER">
-                <app-login-email fxFlex="50"></app-login-email>
-                <app-login fxFlex="50"></app-login>
+                <app-login></app-login>
             </md-tab>
         </md-tab-group>
     </div>
-    <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center center">
-        <h3>PAYMENT METHODS</h3>
-        <p>Paypal</p>
+    <div class="payment" fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutgap="10px">
+            <img fxFlex=25 class="img" src="../../../assets/images/paypal2.png">
+            <img fxFlex=25 class="img" src="../../../assets/images/visa.png">
+            <img fxFlex=25 class="img" src="../../../assets/images/credit-card.png">
+            <img fxFlex=25 class="img" src="../../../assets/images/mastercard.png">
+        </div>
+        <p>{{ final.orderPrice | currency:'USD':true:'.2-2' }}</p>
         &nbsp; &nbsp;
-        <button [disabled]="!(this.af.authState | async)?.uid" class="z-depth-2" center md-raised-button color="primary" id="order-btn" (click)="openCheckout()">Order Now!</button>
+        <!--<div id="paypal-button"></div>-->
+        <form #form (ngSubmit)="form.submit()" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business" value="iansam74@gmail.com">
+
+            <!-- Specify a Buy Now button. -->
+            <input type="hidden" name="cmd" value="_xclick">
+
+            <!-- Specify details about the item that buyers will purchase. -->
+            <input type="hidden" name="item_name" value="Essay">
+            <input type="hidden" [(ngModel)]="final.orderPrice" name="amount" value="amount">
+            <input type="hidden" name="currency_code" value="USD">
+
+            <!--Return urls-->
+            <input type="hidden" name="return" value="{{returnURL}}" />
+            <input type="hidden" name="cancel_return" value="https://localhost:4200/order/failed" />
+
+            <!-- Display the payment button. -->
+            <button type="submit" (click)="saveData()" [disabled]="!ifUser" center md-raised-button color="primary" name="submit" id="paypal-button">Order Now!</button>
+
+        </form>
+        <p>*(All payments are processed via papypal<br> hence a paypal account is needed)</p>
     </div>
 </div>

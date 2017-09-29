@@ -1,0 +1,26 @@
+.error {
+    color: red;
+    font-size: small;
+}
+
+.userImage {
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.card {
+    padding: 30px 10% 30px 10%;
+}
+
+.form-container {
+    height: calc(100vh - 200px);
+}
+
+@media screen and (max-width: 350px) {
+    .card {
+        margin: 0;
+    }
+}

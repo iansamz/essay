@@ -1,10 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~https://fonts.googleapis.com/icon?family=Roboto';
+@import '~https://fonts.googleapis.com/icon?family=Black+Ops+One';
 body {
-    font-family: Roboto;
+    font-family: "Black Ops One";
     margin: 0px;
+}
+
+.preloader {
+    height: 100vh;
+    background-color: #4bc2ba
+}
+
+.logo1 {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%;
+    /*font-size: 70px;
+    font-family: kilogram;
+    color: white;*/
+}
+
+@media (max-width: 600px) {
+    .logo1 {
+        left: 10%;
+        width: 300px;
+        /*font-size: 40px;*/
+    }
+}
+
+.mat-select,
+.mat-input,
+.mat-options,
+.mat-toolbar,
+.mat-card,
+.mat-button,
+.mat-raised-button {
+    font-family: "Black Ops One"!important;
 }
 
 .z-depth-1 {

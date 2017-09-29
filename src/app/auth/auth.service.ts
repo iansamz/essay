@@ -13,10 +13,18 @@ export class AuthService {
 
   currentUser : any ;
   currentUserUid : any;
-  user: any
+  user: any =  {
+          uid: false,
+          displayName: "You are not Logged In",
+          email: "",
+          providerId: "",
+          photoURL: "../assets/images/man.png",
+          created: "",
+          isAdmin: false
+        };
   ifUser : boolean = false;
   users : FirebaseListObservable<any> = this.db.list('/users');
-  userSubject: Subject<any>
+  userSubject: Subject<any>;
   constructor(public af : AngularFireAuth, private router : Router, public db :AngularFireDatabase) { 
     this.authState();
   }
@@ -29,7 +37,20 @@ export class AuthService {
       }
     });
     this.users.subscribe((data:object) =>{
-      this.user = data[0];
+      if(data[0] !==null){
+        this.user = data[0];
+        this.user.photoURL = data[0].photoURL || "../assets/images/man.png";
+      }else{
+          this.user =  {
+          uid: "",
+          displayName: "You are not Logged In",
+          email: "",
+          providerId: "",
+          photoURL: "../assets/images/man.png",
+          created: "",
+          isAdmin: false
+        };
+      }
     });
   }
 
@@ -39,13 +60,35 @@ export class AuthService {
         this.getUser(auth.uid);
       }
     });
-    
   }
+  
+ 
+  getCurrentUser(){
+    let authD = new Subject();
+    this.af.authState.subscribe(auth => { 
+      if(auth !==null){
+        authD.next(auth.uid)
+      }else{
+        authD.next(this.user.uid)
+      }
+    });
+    return authD
+  }
+
 
   logout() {
     this.af.auth.signOut();
     this.currentUser = firebase.auth().currentUser;
     this.router.navigateByUrl('/auth/login');
+    this.user =  {
+          uid: "",
+          displayName: "You are not Logged In",
+          email: "",
+          providerId: "",
+          photoURL: "../assets/images/man.png",
+          created: "",
+          isAdmin: false
+        };
   }
 
 
@@ -54,6 +97,9 @@ export class AuthService {
     .then(
       (success) => {
           this.createUser();
+          if(this.router.url === "/auth/login" || "auth/signup"){
+            this.router.navigate(['/home']);
+          }
         }).catch(
           (err) => {
           error = err;
@@ -65,6 +111,9 @@ export class AuthService {
     .then(
         (success) => {
           this.createUser();
+          if(this.router.url === "/auth/login" || "auth/signup"){
+            this.router.navigate(['/home']);
+          }
         }).catch(
           (err) => {
           error = err;
@@ -89,7 +138,8 @@ export class AuthService {
                 email : userLogged.email,
                 providerId: userLogged.providerId,
                 photoURL: userLogged.photoURL,
-                created : +Date.now()
+                created : +Date.now(),
+                isAdmin : false
               };
             let user : FirebaseListObservable<any>= this.db.list('/users');
             user.push(newUser);

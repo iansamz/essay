@@ -1,3 +1,22 @@
-<p>
-  settings works!
-</p>
+<div fxFlex="1 0 auto" fxLayoutAlign="center center" class="form-container">
+    <md-card class="card">
+        <img class="userImage" src="{{photoURL}}">
+        <form #formName="ngForm">
+            <md-input-container>
+                <!--<span class="error" *ngIf="error">{{ error }}</span>-->
+                <input mdInput [(ngModel)]="displayName" name="displayName" required>
+            </md-input-container>
+            <br>
+            <button color="primary" md-raised-button>Save</button>
+        </form>
+        <form #formEmail="ngForm">
+            <!--(ngSubmit)="updateEmail(formEmail.value)">-->
+            <!--<span class="error" *ngIf="error">{{ error }}</span>-->
+            <md-input-container>
+                <input mdInput [(ngModel)]="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+            </md-input-container>
+            <br>
+            <button type="submit" md-button color="primary" md-raised-button>Save</button>
+        </form>
+    </md-card>
+</div>

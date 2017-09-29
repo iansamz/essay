@@ -166,79 +166,79 @@ servicesA = [
     academicLevelA = [
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       },
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       },
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       },
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       },
       {
         array:[
-          { name: "Doctoral", value:1 }
+          { name: "Doctoral", value:1, index:0 }
         ]
       },
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       },
       {
         array:[
-          { name:"College", value:1},
-          { name:"Graduate", value:1.1},
-          { name:"MBA", value:1.1},
-          { name:"Law", value:1.2},
-          { name:"Medical", value:1.2}
+          { name:"College", value:1, index:0 },
+          { name:"Graduate", value:1.1, index:1 },
+          { name:"MBA", value:1.1, index:2 },
+          { name:"Law", value:1.2, index:3 },
+          { name:"Medical", value:1.2, index:4 }
         ]
       },
       {
         array:[
-          { name:"Associate's", value:1},
-          { name:"Bachelor's", value:1.25},
-          { name:"Master's", value:1.5},
-          { name:"Doctoral", value:1.5}
+          { name:"Associate's", value:1, index:0 },
+          { name:"Bachelor's", value:1.25, index:1 },
+          { name:"Master's", value:1.5, index:2 },
+          { name:"Doctoral", value:1.5, index:3 }
         ]
       },
       {
@@ -248,172 +248,172 @@ servicesA = [
       },
       {
         array:[
-          { name:"High School", value:1},
-          { name:"Freshman", value:1 },
-          { name:"Sophomore", value:1 },
-          { name:"Junior", value:1 },
-          { name:"Senior", value:1.3 },
-          { name:"Masters", value:1.5 },
-          { name:"Doctoral", value:1.5 }
+          { name:"High School", value:1, index:0 },
+          { name:"Freshman", value:1, index:1 },
+          { name:"Sophomore", value:1, index:2 },
+          { name:"Junior", value:1, index:3 },
+          { name:"Senior", value:1.3, index:4 },
+          { name:"Masters", value:1.5, index:5 },
+          { name:"Doctoral", value:1.5, index:6 }
         ]
       }
     ];
     urgencyA = [
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.9 },
-          { name: "8 hrs", time: 8, value:1.85 },
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       },
       {
         array:[
-          { name: "12 hrs", time: 12, value:1.8 },
-          { name: "18 hrs", time: 18, value:1.75 },
-          { name: "24 hrs", time: 24, value:1.7 },
-          { name: "48 hrs", time: 48, value:1.6 },
-          { name: "3 days", time: 72, value:1.5 },
-          { name: "5 days", time: 120, value:1.45 },
-          { name: "6 days", time: 144, value:1.4 },
-          { name: "7 days", time: 168, value:1.3 },
-          { name: "10 days", time: 240, value:1.2 },
-          { name: "14 days", time: 336, value:1 }
+          { name: "14 days", time: 336, value:1, index:0 },
+          { name: "10 days", time: 240, value:1.2, index:1 },
+          { name: "7 days", time: 168, value:1.3, index:2 },
+          { name: "6 days", time: 144, value:1.4, index:3 },
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 }
         ]
       },
       {
         array:[
-          { name: "24 hrs", time: 24, value:1.5 },
-          { name: "48 hrs", time: 48, value:1.4 },
-          { name: "3 days", time: 72, value:1.3 },
-          { name: "5 days", time: 120, value:1 }
+          { name: "5 days", time: 120, value:1.45, index:4 },
+          { name: "3 days", time: 72, value:1.5, index:5 },
+          { name: "48 hrs", time: 48, value:1.6, index:6 },
+          { name: "24 hrs", time: 24, value:1.7, index:7 }
         ]
       },
       {
         array:[
-          { name: "6 hrs", time: 6, value:1.5 },
-          { name: "8 hrs", time: 8, value:1.45 },
-          { name: "12 hrs", time: 12, value:1.4 },
-          { name: "18 hrs", time: 18, value:1.3 },
-          { name: "24 hrs", time: 24, value:1 }
+          { name: "24 hrs", time: 24, value:1.7, index:7 },
+          { name: "18 hrs", time: 18, value:1.75, index:8 },
+          { name: "12 hrs", time: 12, value:1.8, index:9 },
+          { name: "8 hrs", time: 8, value:1.85, index:10 },
+          { name: "6 hrs", time: 6, value:1.9, index:11 }
         ]
       }
     ];

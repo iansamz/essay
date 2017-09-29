@@ -12,6 +12,11 @@ import { SignupComponent } from './signup/signup.component'
         RouterModule.forChild([
             {
                 path: '',
+                redirectTo: 'login',
+                pathMatch: 'full'
+            },
+            {
+                path: '',
                 component: AuthComponent,
                 children: [
                     {

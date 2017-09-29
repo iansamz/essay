@@ -1,0 +1,25 @@
+<md-card class="card">
+    <div class="dets">
+        <p>Service: <span class="det">{{service}}</span></p>
+        <p>Paper: <span class="det">{{paper}}</span></p>
+        <p>Subject Area: <span class="det">{{subject}}</span></p>
+        <p>Topic: <span class="det">{{topic}}</span></p>
+        <p>Order Description: <span class="det">{{orderDesc}}</span></p>
+        <p>Format: <span class="det">{{format}}</span></p>
+        <p>Resources: <span class="det">{{resources}}</span></p>
+        <p>Academic Level: <span class="det">{{academicLevel}}</span></p>
+        <p>Urgency: <span class="det">{{urgency}}</span></p>
+        <p>Page(s): <span class="det">{{pages}}</span></p>
+        <p>Writer: <span class="det">{{writer}}</span></p>
+        <p>Writer Level: <span class="det">{{writerLevel}}</span></p>
+        <p>Originality Report: <span class="det">{{originality}}</span></p>
+        <p>Proof read: <span class="det">{{proofRead}}</span></p>
+        <p>1-page summary: <span class="det">{{summary}}</span></p>
+        <p>Urgent-writer: <span class="det">{{urgentWriter}}</span></p>
+        <p>Draft: <span class="det">{{draft}}</span></p>
+        <p>Customer-service: <span class="det">{{custService}}</span></p>
+        <p>Order Total: <span class="det">{{orderPrice}}</span></p>
+        <p>Email: <span class="det">{{email}}</span></p>
+        <button *ngIf="!isCompleted" (click)="setComplete()" center md-raised-button color="primary">Complete</button>
+    </div>
+</md-card>

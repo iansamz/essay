@@ -1,3 +1,37 @@
-<p>
-  orders works!
-</p>
+<div class="container">
+    <h2 class="title" *ngIf="orderI">Active Orders</h2>
+    <div fxLayoutAlign="stretch justify-content">
+        <div *ngFor="let order of orderI | async">
+            <md-card class="card" fxFlex=25>
+                <p class="time">Order : {{ order.orderId }}</p>
+                <p class="time">DeadLine : {{ order.isTBD | date:'short'}}</p>
+                <form #form (ngSubmit)="form.submit()" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" *ngIf="order.isPaid == false">
+
+
+                    <input type="hidden" name="business" value="iansam74@gmail.com">
+
+
+                    <input type="hidden" name="cmd" value="_xclick">
+
+
+                    <input type="hidden" name="item_name" value="Essay">
+                    <input type="hidden" [(ngModel)]="order.orderPrice" name="amount" value="amount">
+                    <input type="hidden" name="currency_code" value="USD">
+
+
+                    <input type="hidden" name="return" value="{{returnURL + order.orderId}}" />
+                    <input type="hidden" name="cancel_return" value="https://localhost:4200/order/failed" />
+
+
+                    <button type="submit" (click)="saveData()" center md-raised-button color="primary" name="submit" id="paypal-button">Pay Now!</button>
+
+                </form>
+            </md-card>
+        </div>
+    </div>
+    <h2 class="title" *ngIf="orderC">Complete Orders</h2>
+    <div *ngFor="let order of orderC | async">
+        {{ order | json }}
+        <!--<button (click)="deleteOrder(order.$key)"></button>-->
+    </div>
+</div>

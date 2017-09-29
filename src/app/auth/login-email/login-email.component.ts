@@ -11,13 +11,14 @@ export class LoginEmailComponent implements OnInit {
 
   state: string = '';
   error: any;
+  email : string;
+  password : string;
 
   constructor(public as: AuthService,  private router: Router) { 
     this.as.authState();
   }
 
   ngOnInit() {
-
   }
 
   onSubmit(formData) {
@@ -25,7 +26,9 @@ export class LoginEmailComponent implements OnInit {
       this.as.af.auth.signInWithEmailAndPassword(formData.value.email,formData.value.password)
       .then(
         (success) => {
-          this.router.navigate(['/home']);
+            if(this.router.url =="/auth/login-email"){
+              this.router.navigate(['/home']);
+            }
       }).catch(
         (err) => {
           this.error = err;

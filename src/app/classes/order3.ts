@@ -19,4 +19,12 @@ export class Order3{
     urgentWriter : boolean;
     draft : boolean;
     custService  : number;
+    isCreated: any;
+    isPaid : boolean;
+    isCompleted : boolean;
+    orderId: any;
+    time : any;
+    isTBD : any;
+    clientUid: string;
+    clientEmail: string;
 }

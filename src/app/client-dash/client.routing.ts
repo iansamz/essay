@@ -10,6 +10,11 @@ import { SettingsComponent } from './settings/settings.component';
         RouterModule.forChild([
             {
                 path: '',
+                redirectTo: 'orders',
+                pathMatch: 'full'
+            },
+            {
+                path: '',
                 component: ClientDashComponent,
                 children: [
                     {

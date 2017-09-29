@@ -1,0 +1,9 @@
+.card {
+    min-width: 300px;
+}
+
+.container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: calc(80vh - 100px);
+}

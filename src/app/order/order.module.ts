@@ -13,6 +13,9 @@ import { OrderPrefsComponent } from './order-prefs/order-prefs.component';
 import { ContactComponent } from './contact/contact.component';
 import { OrderService } from './order.service';
 import { AuthModule } from '../auth/auth.module';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { OrderFailedComponent } from './order-failed/order-failed.component';
+import { NewComponent } from './new/new.component';
 
 @NgModule({
   imports: [
@@ -27,7 +30,16 @@ import { AuthModule } from '../auth/auth.module';
   ],
   exports: [OrderLandingComponent],
   providers: [OrderService],
-  declarations: [OrderComponent, OrderLandingComponent, PaperDetailsComponent, OrderPrefsComponent, ContactComponent]
+  declarations: [
+    OrderComponent,
+    OrderLandingComponent,
+    PaperDetailsComponent, 
+    OrderPrefsComponent,
+    ContactComponent,
+    OrderSuccessComponent, 
+    OrderFailedComponent, 
+    NewComponent
+ ]
 })
 export class OrderModule {
   static forRoot(): ModuleWithProviders {

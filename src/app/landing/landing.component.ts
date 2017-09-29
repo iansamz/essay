@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,8 +8,12 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit, OnDestroy {
-  ngOnInit(){
 
+  constructor(public as : AuthService, public router: Router){
+    this.as.authState();
+  }
+  ngOnInit(){
+    
   }
   ngOnDestroy(){
     

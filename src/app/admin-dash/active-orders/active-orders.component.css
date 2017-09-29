@@ -1,0 +1,20 @@
+.title {
+    font-family: "Kilogram"!important
+}
+
+.card {
+    min-width: 250px;
+    padding: 30px;
+    color: #009688;
+    font-size: large;
+}
+
+.time {
+    color: red;
+    font: large;
+}
+
+.container {
+    padding: 20px;
+    height: 80%
+}

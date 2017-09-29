@@ -1,0 +1,51 @@
+.call-landing {
+    /*background-color: #009688;*/
+    background-image: url(../../assets/images/t1.png);
+    height: 70vh;
+    background-position: 0px -65px;
+}
+
+.tag {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    right: 20%;
+    color: white;
+    font-size: 50px;
+}
+
+.order-form {
+    position: relative;
+    top: -30vh;
+}
+
+.actions {
+    margin-top: -100px;
+    align-items: center!important;
+}
+
+.action {
+    align-items: center!important;
+    padding: 30px;
+    width: 300px
+}
+
+.action-img {
+    height: 126px;
+    width: 126px
+}
+
+
+/*.tag,
+action {
+    -vendor-animation-duration: 3s;
+    -animation-duration: 3s;
+    -vendor-animation-delay: 2s;
+    -animation-delay: 2s;
+}*/
+
+@media (max-width: 600px) {
+    .tag {
+        font-size: 30px;
+    }
+}

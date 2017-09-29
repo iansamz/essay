@@ -1,0 +1,22 @@
+.order-card {
+    margin: 30px
+}
+
+.order-card /deep/ md-tab-group /deep/ md-tab-header /deep/ .mat-tab-label-container /deep/ .mat-tab-list /deep/ .mat-tab-labels {
+    justify-content: center;
+}
+
+.form-container {
+    width: 100%;
+    padding: 30px 10% 30px 10%;
+}
+
+#order-btn,
+.next-btn {
+    width: 100px;
+}
+
+md-select,
+md-input-container {
+    padding: 10px
+}

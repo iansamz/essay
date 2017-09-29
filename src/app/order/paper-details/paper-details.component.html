@@ -1,53 +1,53 @@
-<form [formGroup]="orderForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(orderForm.value)">
+<form #orderForm='ngForm' autocomplete="off" novalidate (ngSubmit)="onSubmit(orderForm.value)">
     <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="center space-around " class="form-container" fxLayoutgap="10px">
-        <md-select formControlName="service" placeholder="Type of Service" (change)=change()>
+        <md-select name="service" [(ngModel)]="service" placeholder="Type of Service" (change)=change(orderForm.value)>
             <md-option *ngFor="let service of servicesA" [value]="service.value">
                 {{service.name}}
             </md-option>
         </md-select>
-        <md-select *ngIf="ifResume" formControlName="paper" placeholder="Type of {{typeService}}" (change)=change()>
+        <md-select *ngIf="ifResume" name="paper" [(ngModel)]="paper" placeholder="Type of {{typeService}}" (change)=change(orderForm.value)>
             <md-option *ngFor="let paper of papersA[optionsValue].array " [value]="paper.value">
                 {{paper.name}}
             </md-option>
         </md-select>
-        <md-select formControlName="subject" placeholder="Subject Area">
+        <md-select name="subject" [(ngModel)]="subject" placeholder="Subject Area">
             <md-option *ngFor="let subject of subjectsA" [value]="subject.value">
                 {{subject.name}}
             </md-option>
         </md-select>
         <md-input-container>
-            <textarea formControlName="topic" mdInput placeholder="Topic"></textarea>
+            <textarea name="topic" [(ngModel)]="topic" mdInput placeholder="Topic" required></textarea>
         </md-input-container>
         <md-input-container>
-            <textarea formControlName="orderDesc" mdInput placeholder="Order Description"></textarea>
+            <textarea name="orderDesc" [(ngModel)]="orderDesc" mdInput placeholder="Order Description" required></textarea>
         </md-input-container>
-        <md-select formControlName="format" placeholder="Type of Format">
+        <md-select name="format" [(ngModel)]="format" placeholder="Type of Format">
             <md-option *ngFor="let format of formatsA" [value]="format.value">
                 {{format.name}}
             </md-option>
         </md-select>
         <div>
             <md-input-container>
-                <input formControlName="resources" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of Resources">
+                <input name="resources" [(ngModel)]="resources" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of Resources">
             </md-input-container>
             &nbsp;
-            <md-checkbox formControlName="resNeed" (change)=resNeed()>Not Needed</md-checkbox>
-        </div>
-        <md-select *ngIf="ifResume" formControlName="academicLevel" placeholder="Academic Level" (change)=change()>
-            <md-option *ngFor="let academicLevel of academicLevelsA[optionsValue].array" [value]="academicLevel.value">
+            <md-checkbox name="resNeed" [(ngModel)]="resNeed" (change)=resNeeded()>Not Needed</md-checkbox>
+        </div><br>
+        <md-select *ngIf="ifResume" name="academicLevel" [(ngModel)]="academicLevel" placeholder="Academic Level" (change)=change(orderForm.value)>
+            <md-option *ngFor="let academicLevel of academicLevelsA[optionsValue].array" [value]="academicLevel.index">
                 {{academicLevel.name}}
             </md-option>
         </md-select>
-        <md-select formControlName="urgency" placeholder="Urgency" (change)=change()>
-            <md-option *ngFor="let urgency of urgencysA[optionsValue].array " [value]="urgency.value">
+        <md-select name="urgency" [(ngModel)]="urgency" placeholder="Urgency" (change)=change(orderForm.value)>
+            <md-option *ngFor="let urgency of urgencysA[optionsValue].array " [value]="urgency.index">
                 {{urgency.name}}
             </md-option>
         </md-select>
 
         <md-input-container *ngIf="ifResume">
-            <input formControlName="pages" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of {{typeQ}}" (change)=change()>
+            <input name="pages" [(ngModel)]="pages" onKeyPress="return event.charCode >= 48" min="1" mdInput type="number" placeholder="Number of {{typeQ}}" (change)=change(orderForm.value)>
         </md-input-container>
-        <md-radio-group formControlName="writer" (change)=change()>
+        <md-radio-group name="writer" [(ngModel)]="writer" (change)=change(orderForm.value)>
             <md-radio-button value=1>
                 US Writer
             </md-radio-button>

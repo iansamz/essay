@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Order1 } from '../../classes/order1';
 import { Order2 } from '../../classes/order2';
 import { OrderLandingService } from './../orderLanding.service';
@@ -12,19 +11,18 @@ import { OrderService } from './../order.service';
 })
 export class PaperDetailsComponent implements OnInit {
 
-  orderForm : FormGroup;
-  private serviceSelected : FormControl;
-  private paperSelected: FormControl;
-  private subjectSelected: FormControl;
-  private topicSelected: FormControl;
-  private orderDescSelected: FormControl;
-  private formatSelected: FormControl;
-  private resourcesSelected: FormControl;
-  private resNeedSelected: FormControl;
-  private academicLevelSelected: FormControl;
-  private pagesSelected: FormControl;
-  private writerSelected: FormControl;
-  private urgencySelected: FormControl;
+  service : any;
+  paper : any;
+  subject: any = 0;
+  topic : any;
+  orderDesc : any;
+  format : any = 0;
+  resources: any = 0;
+  resNeed : any = 1;
+  academicLevel : any;
+  pages : any;
+  writer : any = 1;
+  urgency: any;
   order : Order1;
   orderPrice: number;
   optionsValue : number;
@@ -36,7 +34,8 @@ export class PaperDetailsComponent implements OnInit {
   formatsA : object;
   ifResume : boolean = true;
   typeService : any;
-  typeQ :any;
+  typeQ : any;
+  time : any;
   multiplierA : number;
   multiplierB : number;
   multiplierC : number;
@@ -50,8 +49,8 @@ export class PaperDetailsComponent implements OnInit {
       service : 0,
       paper : 0,
       pages : 1,
-      academicLevel : 1,
-      urgency : 1
+      academicLevel : 0,
+      urgency : 0  
     };
     this.servicesA = this.orderLandingService.servicesA;
     this.papersA = this.orderLandingService.papersA;
@@ -59,44 +58,29 @@ export class PaperDetailsComponent implements OnInit {
     this.urgencysA = this.orderLandingService.urgencyA;
     this.subjectsA = this.orderLandingService.subjectsA;
     this.formatsA = this.orderLandingService.formatsA;
-    this.optionsValue = this.order.service;
-    this.serviceSelected = new FormControl(this.order.service);
-    this.paperSelected = new FormControl(this.order.paper);
-    this.subjectSelected = new FormControl(0);
-    this.topicSelected = new FormControl("",Validators.required);
-    this.orderDescSelected = new FormControl("",Validators.required);
-    this.formatSelected = new FormControl(0);
-    this.resourcesSelected = new FormControl(0);
-    this.resNeedSelected = new FormControl(1);
-    this.academicLevelSelected = new FormControl(this.order.academicLevel);
-    this.pagesSelected = new FormControl(this.order.pages);
-    this.writerSelected = new FormControl(1);
-    this.urgencySelected = new FormControl(this.order.urgency);
-    this.orderForm = new FormGroup({
-      service : this.serviceSelected,
-      paper : this.paperSelected,
-      subject: this.subjectSelected,
-      topic : this.topicSelected,
-      orderDesc : this.orderDescSelected,
-      format : this.formatSelected,
-      resources: this.resourcesSelected,
-      resNeed : this.resNeedSelected,
-      academicLevel : this.academicLevelSelected,
-      pages : this.pagesSelected,
-      writer : this.writerSelected,
-      urgency: this.urgencySelected
-    });
 
-    this.optionsValue = this.orderForm.get('service').value;
+    this.service = this.order.service;
+    this.paper = this.order.paper;
+    this.academicLevel = this.order.academicLevel;
+    this.pages = this.order.pages;
+    this.urgency = this.order.urgency;
+    
+    this.optionsValue = this.order.service;
     this.checkPType();
-    this.calculatePrice();
+
+    
+    this.multiplierA = (this.academicLevelsA[this.optionsValue].array[this.academicLevel]["value"]);
+    this.multiplierB = (this.urgencysA[this.optionsValue].array[this.urgency]["value"]); 
+    this.multiplierC = this.pages;
+    this.multiplierD = this.writer;
+    
+    this.orderPrice = (this.servicesA[this.optionsValue]["price"])*this.multiplierA*this.multiplierB*this.multiplierC*this.multiplierD;
   }
   change(value){
-    
-    this.optionsValue = this.orderForm.get('service').value;
+    this.optionsValue = value.service ;
     this.checkResume();
     this.checkPType();
-    this.calculatePrice();
+    this.calculatePrice(value);
   }
   checkPType(){
     if(this.optionsValue == 2 ){ 
@@ -121,16 +105,16 @@ export class PaperDetailsComponent implements OnInit {
     return this.ifResume;
   }
 
-  calculatePrice(){
-    this.multiplierA = this.orderForm.get('academicLevel').value;
-    this.multiplierB = this.orderForm.get('urgency').value;
-    this.multiplierC = this.orderForm.get('pages').value;
-    this.multiplierD = this.orderForm.get('writer').value;
+  calculatePrice(value){
+    this.multiplierA = (this.academicLevelsA[this.optionsValue].array[value.academicLevel]["value"]);
+    this.multiplierB = (this.urgencysA[this.optionsValue].array[value.urgency]["value"]); 
+    this.multiplierC = value.pages;
+    this.multiplierD = value.writer;
     
     this.orderPrice = (this.servicesA[this.optionsValue]["price"])*this.multiplierA*this.multiplierB*this.multiplierC*this.multiplierD;
     return this.orderPrice;
   }
-  resNeed() {
+  resNeeded() {
         this.ifRes = !this.ifRes;
   }
 
@@ -140,8 +124,8 @@ export class PaperDetailsComponent implements OnInit {
      this.nextTab1();
   }
 
-  @Input() tab : any;
-  @Output() nextTab = new EventEmitter();
+  @Input() public tab : any;
+  @Output() public nextTab = new EventEmitter();
   
   nextTab1(){
     this.tab = this.tab+1;
